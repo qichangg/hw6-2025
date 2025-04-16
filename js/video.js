@@ -18,14 +18,14 @@ window.addEventListener("load", function() {
     video = document.getElementById("player1");
     video.autoplay = false;
     video.loop = false;
-    video.volume = 1; // Set initial volume to 100%
-    document.getElementById("volume").textContent = (video.volume * 100) + "%";
+    video.volume = document.getElementById("slider").value / 100; // Set initial volume from slider
+    updateVolumeDisplay();
 
     // Play Button
     document.querySelector("#play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
-        document.getElementById("volume").textContent = (video.volume * 100) + "%";
+        updateVolumeDisplay(); // Update volume display when playing
     });
 
     // Pause Button
@@ -65,7 +65,7 @@ window.addEventListener("load", function() {
     // Volume Slider
     document.querySelector("#slider").addEventListener("input", function() {
         video.volume = this.value / 100;
-        document.getElementById("volume").textContent = (video.volume * 100) + "%";
+        updateVolumeDisplay();
     });
 
     // Old School Styling
@@ -77,4 +77,9 @@ window.addEventListener("load", function() {
     document.querySelector("#orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
+
+    // Helper function to update volume display
+    function updateVolumeDisplay() {
+        document.getElementById("volume").textContent = Math.round(video.volume * 100) + "%";
+    }
 });
