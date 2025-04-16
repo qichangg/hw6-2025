@@ -1,31 +1,19 @@
-// var video;
-
-// window.addEventListener("load", function() {
-// 	console.log("Good job opening the window")
-
-// });
-
-// document.querySelector("#play").addEventListener("click", function() {
-// 	console.log("Play Video");
-// });
-
 var video;
 
 window.addEventListener("load", function() {
     console.log("Good job opening the window");
-    
-    // Initialize the video element
+
     video = document.getElementById("player1");
     video.autoplay = false;
     video.loop = false;
-    video.volume = document.getElementById("slider").value / 100; // Set initial volume from slider
-    updateVolumeDisplay();
+    video.volume = 1;
+    document.getElementById("volume").textContent = (video.volume * 100) + "%";
 
     // Play Button
     document.querySelector("#play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
-        updateVolumeDisplay(); // Update volume display when playing
+        document.getElementById("volume").textContent = (video.volume * 100) + "%";
     });
 
     // Pause Button
@@ -65,21 +53,16 @@ window.addEventListener("load", function() {
     // Volume Slider
     document.querySelector("#slider").addEventListener("input", function() {
         video.volume = this.value / 100;
-        updateVolumeDisplay();
+        document.getElementById("volume").textContent = (video.volume * 100) + "%";
     });
 
-    // Old School Styling
+    // Old School
     document.querySelector("#vintage").addEventListener("click", function() {
         video.classList.add("oldSchool");
     });
 
-    // Original Styling
+    // Original
     document.querySelector("#orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
-
-    // Helper function to update volume display
-    function updateVolumeDisplay() {
-        document.getElementById("volume").textContent = Math.round(video.volume * 100) + "%";
-    }
 });
