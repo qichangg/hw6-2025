@@ -10,16 +10,18 @@ window.addEventListener("load", function() {
     document.getElementById("volume").textContent = (video.volume * 100) + "%";
 
     // Play Button
-    document.querySelector("#play").addEventListener("click", function() {
-        // console.log("Play Video");
-        // video.play();
-        // document.getElementById("volume").textContent = (video.volume * 100) + "%";
-		document.querySelector("#play").addEventListener("click", function() {
-			video.play();
-			// volumeInfo.textContent = Math.round(video.volume * 100) + '%';
-			document.getElementById("volume").textContent = Math.round(video.volume * 100) + "%";
-		});
-    });
+    // document.querySelector("#play").addEventListener("click", function() {
+    //     // console.log("Play Video");
+    //     // video.play();
+    //     // document.getElementById("volume").textContent = (video.volume * 100) + "%";
+
+    // });
+
+	document.querySelector("#play").addEventListener("click", function() {
+		video.play();
+		// volumeInfo.textContent = Math.round(video.volume * 100) + '%';
+		document.getElementById("volume").textContent = Math.round(video.volume * 100) + "%";
+	});
 
 
     // Pause Button
